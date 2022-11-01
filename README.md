@@ -1,5 +1,7 @@
 ![Yamdb Workflow Status](https://github.com/nidzhat666/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg?branch=master&event=push)
 
+###### http://nzmaslo.ru:3000
+
 ApiYamdb
 ===
 
