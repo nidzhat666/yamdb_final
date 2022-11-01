@@ -2,14 +2,13 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:latest
+    image: postgres:15-bullseye
     volumes:
       - /var/lib/postgresgl/data/
     env_file:
       - ./.env
   web:
-#    image: nidzhat/yamdb_final:latest
-    build: ../api_yamdb
+    image: nidzhat/yamdb_final:latest
     restart: always
     volumes:
       - static_value:/app/static
@@ -20,7 +19,7 @@ services:
       - ./.env
 
   nginx:
-    image: nginx:latest
+    image: nginx:1.23.2-perl
     ports:
       - "3000:3000"
     volumes:
