@@ -1,9 +1,13 @@
-FROM python:3.7-slim
-WORKDIR /app
-COPY . .
-RUN ls api_yamdb
-RUN pip3 install --upgrade pip
-RUN pip3 install -r api_yamdb/requirements.txt --no-cache-dir
-RUN ls
-CMD ["ls"]
-CMD ["gunicorn",  "--chdir", "/app/api_yamdb", "api_yamdb.wsgi:application", "--bind", "0:8000"]
+FROM python:3.8.3-alpine
+WORKDIR /usr/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+RUN pip install --upgrade pip
+COPY ./requirements.txt /usr/src/app
+RUN pip install -r requirements.txt
+COPY . /usr/src/app
+
+EXPOSE 8000
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
