@@ -62,6 +62,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             cd ~/yamdb_final/infra
+            git pull
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
